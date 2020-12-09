@@ -11,17 +11,23 @@ var root = new Vue({
       imageIndex: 0
    },
    methods: {
-      prev: function() {
+      prev() {
          this.imageIndex -= 1;
          if (this.imageIndex == -1) {
             this.imageIndex = this.images.length - 1;
          }
       },
-      next: function() {
+      next() {
          this.imageIndex += 1;
          if (this.imageIndex == this.images.length) {
             this.imageIndex = 0;
          }
+      },
+      startSlider() {
+         setInterval(() => this.next(), 3000);
       }
+   },
+   mounted() {
+      this.startSlider();
    }
 })
